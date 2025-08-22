@@ -3,8 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LLM Summer School for Digital Humanities</title>
+    <title>Large Language Models for Qualitative Data Analysis</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+        
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --accent-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --background: #fafbfc;
+            --surface: #ffffff;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 12px;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -12,71 +30,202 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #fafafa;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--background);
+            font-weight: 400;
         }
         
-        header {
-            background: white;
-            padding: 2rem 0;
-            border-bottom: 1px solid #e1e5e9;
-            text-align: center;
+        .hero {
+            background: var(--primary-gradient);
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
         }
         
-        .header-content {
-            max-width: 1000px;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:white;stop-opacity:0.1"/><stop offset="100%" style="stop-color:white;stop-opacity:0"/></radialGradient></defs><circle cx="200" cy="200" r="3" fill="url(%23a)"/><circle cx="800" cy="300" r="2" fill="url(%23a)"/><circle cx="400" cy="600" r="2" fill="url(%23a)"/></svg>') center/cover;
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
         }
         
-        .logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .logo-icon {
-            width: 48px;
-            height: 48px;
-            background: #24292f;
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
             color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            transform: rotate(45deg);
-            border-radius: 8px;
+            margin-bottom: 2rem;
+            letter-spacing: 0.5px;
         }
         
-        .logo-icon span {
-            transform: rotate(-45deg);
-            font-size: 1.5rem;
+        .hero h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
         }
         
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
+        .hero-instructor {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 0.5rem;
-            color: #24292f;
+            font-weight: 500;
         }
         
-        .subtitle {
-            font-size: 1.2rem;
-            color: #656d76;
-            margin-bottom: 1rem;
+        .hero-affiliation {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
         }
         
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 3rem 2rem;
+            padding: 4rem 2rem;
             display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 3rem;
+            grid-template-columns: 300px 1fr;
+            gap: 4rem;
+        }
+        
+        .sidebar {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 2rem;
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+        }
+        
+        .sidebar h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+        
+        .sidebar h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+        
+        .links-list {
+            list-style: none;
+        }
+        
+        .links-list li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .links-list a {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .links-list a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .links-list a:hover {
+            background: var(--border-light);
+            color: var(--text-primary);
+            transform: translateX(4px);
+        }
+        
+        .links-list a:hover::before {
+            left: 100%;
+        }
+        
+        .main-content {
+            min-width: 0;
+        }
+        
+        .workshop-abstract {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+        }
+        
+        .workshop-abstract h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .workshop-abstract h2::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+        
+        .workshop-abstract p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .workshop-abstract p:last-child {
+            margin-bottom: 0;
         }
         
         .day-section {
@@ -84,70 +233,127 @@
         }
         
         .day-header {
-            font-size: 1.8rem;
-            color: #0969da;
+            font-family: 'Crimson Text', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
             margin-bottom: 2rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #e1e5e9;
+            padding: 1rem 0;
+            position: relative;
+        }
+        
+        .day-header::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+        
+        .day-header {
+            padding-left: 1.5rem;
         }
         
         .sessions-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.5rem;
         }
         
         .session-card {
-            background: white;
-            border: 1px solid #d1d9e0;
-            border-radius: 8px;
+            background: var(--surface);
+            border-radius: var(--radius);
             overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
             transition: all 0.3s ease;
             cursor: pointer;
+            position: relative;
+        }
+        
+        .session-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .session-card:hover::before {
+            transform: scaleX(1);
         }
         
         .session-card:hover {
-            border-color: #0969da;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
         }
         
         .card-image {
-            height: 140px;
-            background: linear-gradient(135deg, #f6f8fa, #e1e7ef);
+            height: 120px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #656d76;
-            font-size: 0.9rem;
-            border-bottom: 1px solid #d1d9e0;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            font-weight: 500;
             text-align: center;
             padding: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .session-card:hover .card-image::before {
+            opacity: 1;
         }
         
         .card-body {
-            padding: 1.5rem;
+            padding: 2rem;
         }
         
         .card-title {
-            font-size: 1.1rem;
+            font-size: 1.125rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #24292f;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
         }
         
         .card-time {
-            color: #0969da;
+            color: #667eea;
             font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            padding: 0.25rem 0.75rem;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 6px;
+            display: inline-block;
         }
         
         .card-description {
-            color: #656d76;
-            margin-bottom: 1rem;
-            font-size: 0.85rem;
-            line-height: 1.4;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
         }
         
         .resource-buttons {
@@ -159,139 +365,161 @@
         .resource-button {
             display: inline-flex;
             align-items: center;
-            gap: 0.3rem;
-            padding: 0.4rem 0.8rem;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
             border: none;
-            border-radius: 6px;
-            font-size: 0.75rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
             font-weight: 600;
             text-decoration: none;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .resource-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .resource-button:hover::before {
+            left: 100%;
         }
         
         .btn-slides {
-            background: #ddf4ff;
-            color: #0969da;
+            background: linear-gradient(135deg, #ddd6fe, #c7d2fe);
+            color: #5b21b6;
         }
         
         .btn-slides:hover {
-            background: #b6e3ff;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(91, 33, 182, 0.2);
         }
         
         .btn-workshop {
-            background: #fff8c5;
-            color: #9a6700;
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            color: #92400e;
         }
         
         .btn-workshop:hover {
-            background: #fff1a0;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(146, 64, 14, 0.2);
         }
         
         .btn-cases {
-            background: #ffebe9;
-            color: #cf222e;
+            background: linear-gradient(135deg, #fecaca, #fca5a5);
+            color: #991b1b;
         }
         
         .btn-cases:hover {
-            background: #ffd8d3;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(153, 27, 27, 0.2);
         }
         
         .btn-live {
-            background: #dcfce7;
-            color: #166534;
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            color: #065f46;
         }
         
         .btn-live:hover {
-            background: #bbf7d0;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(6, 95, 70, 0.2);
         }
         
-        .sidebar {
-            background: white;
-            border: 1px solid #d1d9e0;
-            border-radius: 8px;
-            padding: 2rem;
-            height: fit-content;
-            position: sticky;
-            top: 120px;
-        }
-        
-        .sidebar h2 {
-            font-size: 1.5rem;
-            color: #b91c1c;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            border-bottom: 3px solid #b91c1c;
-            padding-bottom: 0.5rem;
-        }
-        
-        .links-list {
-            list-style: none;
-        }
-        
-        .links-list li {
-            margin-bottom: 1rem;
-        }
-        
-        .links-list a {
-            color: #374151;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            display: block;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid #f3f4f6;
-            transition: color 0.2s;
-        }
-        
-        .links-list a:hover {
-            color: #0969da;
-        }
-        
-        .links-list li:last-child a {
-            border-bottom: none;
-        }
-        
-        .main-content {
-            min-width: 0;
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 280px 1fr;
+                gap: 2rem;
+            }
         }
         
         @media (max-width: 768px) {
+            .hero {
+                min-height: 50vh;
+            }
+            
+            .hero-content {
+                padding: 0 1rem;
+            }
+            
             .container {
                 grid-template-columns: 1fr;
                 gap: 2rem;
                 padding: 2rem 1rem;
             }
             
-            h1 {
-                font-size: 2rem;
+            .sidebar {
+                position: static;
+                order: -1;
+            }
+            
+            .workshop-abstract {
+                padding: 2rem;
             }
             
             .sessions-grid {
                 grid-template-columns: 1fr;
             }
             
-            .sidebar {
-                position: static;
+            .card-body {
+                padding: 1.5rem;
             }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Loading animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .session-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .session-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+        
+        .session-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+        
+        .session-card:nth-child(4) {
+            animation-delay: 0.3s;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                <div class="logo-icon">
-                    <span>◇</span>
-                </div>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                Summer School September 8-11, 2025
             </div>
-            <h1>LLM Summer School for DH</h1>
-            <p class="subtitle">Large Language Models for Digital Humanities</p>
+            <h1>Large Language Models for Qualitative Data Analysis</h1>
+            <p class="hero-instructor">Sarah Oberbichler</p>
+            <p class="hero-affiliation">Leibniz Institute of European History, Mainz</p>
         </div>
-    </header>
+    </section>
 
     <div class="container">
-        <!-- Important Links Sidebar -->
         <aside class="sidebar">
             <h2>Important Links</h2>
             <ul class="links-list">
@@ -303,21 +531,26 @@
             </ul>
         </aside>
 
-        <!-- Main Content -->
         <main class="main-content">
-            <!-- Day 3 -->
+            <div class="workshop-abstract">
+                <h2>Workshop Abstract</h2>
+                <p>Recent AI developments have opened new perspectives for qualitative research. While corpus-based discourse or content analysis traditionally treated texts as a "bag of words" and identified linguistic patterns based on frequency distributions, Large Language Models (LLMs) offer a significantly more profound ability to process language, semantics, and context.</p>
+                
+                <p>This workshop will introduce how LLMs can be integrated into qualitative research by providing insights into their capabilities and limitations, alongside hands-on training in prompt engineering, model implementation, and critical bias evaluation—all demonstrated through practical analysis of earthquake newspaper reporting and their argumentative units.</p>
+            </div>
+
             <div class="day-section">
                 <h2 class="day-header">Day 3 - Wednesday, September 10, 2025</h2>
                 <div class="sessions-grid">
                     <div class="session-card" onclick="openResource('day3-session1')">
                         <div class="card-image">
-                            Digital Editions Overview slide preview
+                            Digital Editions Overview
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">Digital Editions and LLMs</h3>
                             <div class="card-time">09:00-10:30</div>
                             <p class="card-description">
-                                Introduction to LLM-enhanced digital scholarly editions
+                                Introduction to LLM-enhanced digital scholarly editions and their applications in qualitative research.
                             </p>
                             <div class="resource-buttons">
                                 <button class="resource-button btn-slides" onclick="event.stopPropagation(); openResource('slides-day3-1')">
@@ -329,13 +562,13 @@
 
                     <div class="session-card" onclick="openResource('day3-session2')">
                         <div class="card-image">
-                            Modeling with LLMs slide preview
+                            Semantic Modeling Workshop
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">Modeling with LLMs</h3>
                             <div class="card-time">11:00-12:30</div>
                             <p class="card-description">
-                                Semantic modeling and knowledge representation
+                                Semantic modeling and knowledge representation techniques for qualitative data analysis.
                             </p>
                             <div class="resource-buttons">
                                 <button class="resource-button btn-slides" onclick="event.stopPropagation(); openResource('slides-day3-2')">
@@ -350,13 +583,13 @@
 
                     <div class="session-card" onclick="openResource('day3-session3')">
                         <div class="card-image">
-                            Operationalization slide preview
+                            Implementation Strategies
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">Operationalization</h3>
                             <div class="card-time">14:00-15:30</div>
                             <p class="card-description">
-                                Implementing LLM pipelines for edition workflows
+                                Implementing LLM pipelines for qualitative research workflows and data processing.
                             </p>
                             <div class="resource-buttons">
                                 <button class="resource-button btn-cases" onclick="event.stopPropagation(); openResource('cases-day3-3')">
@@ -368,13 +601,13 @@
 
                     <div class="session-card" onclick="openResource('day3-session4')">
                         <div class="card-image">
-                            Exploration slide preview
+                            Interactive Analysis
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">Exploration</h3>
                             <div class="card-time">16:00-17:30</div>
                             <p class="card-description">
-                                Interactive exploration and discovery in digital texts
+                                Interactive exploration and discovery techniques in qualitative text analysis.
                             </p>
                             <div class="resource-buttons">
                                 <button class="resource-button btn-cases" onclick="event.stopPropagation(); openResource('cases-day3-4')">
@@ -386,19 +619,18 @@
                 </div>
             </div>
 
-            <!-- Day 4 -->
             <div class="day-section">
                 <h2 class="day-header">Day 4 - Thursday, September 11, 2025</h2>
                 <div class="sessions-grid">
                     <div class="session-card" onclick="openResource('day4-session1')">
                         <div class="card-image">
-                            Vibe Editions slide preview
+                            Experimental Approaches
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">Vibe Editions and Promptotyping</h3>
                             <div class="card-time">09:00-10:30</div>
                             <p class="card-description">
-                                Experimental approaches to edition design with LLMs
+                                Experimental approaches to qualitative analysis design with advanced prompting techniques.
                             </p>
                             <div class="resource-buttons">
                                 <button class="resource-button btn-slides" onclick="event.stopPropagation(); openResource('slides-day4-1')">
@@ -410,13 +642,13 @@
 
                     <div class="session-card" onclick="openResource('day4-session2')">
                         <div class="card-image">
-                            AI Editions Future slide preview
+                            Future Perspectives
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">AI Editions: Future Perspectives</h3>
+                            <h3 class="card-title">AI Analysis: Future Perspectives</h3>
                             <div class="card-time">11:00-12:30</div>
                             <p class="card-description">
-                                Envisioning next-generation scholarly editions
+                                Envisioning next-generation qualitative research methodologies with AI integration.
                             </p>
                             <div class="resource-buttons">
                                 <button class="resource-button btn-slides" onclick="event.stopPropagation(); openResource('slides-day4-2')">
@@ -431,13 +663,13 @@
 
                     <div class="session-card" onclick="openResource('day4-session3')">
                         <div class="card-image">
-                            Closing Session slide preview
+                            Research Reflections
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">Closing Session & Discussion</h3>
                             <div class="card-time">14:00-15:30</div>
                             <p class="card-description">
-                                Reflections on LLMs in Digital Humanities
+                                Critical reflections on LLMs in qualitative research and bias evaluation strategies.
                             </p>
                             <div class="resource-buttons">
                                 <button class="resource-button btn-live" onclick="event.stopPropagation(); openResource('live-session')">
@@ -453,20 +685,14 @@
 
     <script>
         function openResource(resourceId) {
-            // Handle different resource types based on resourceId
             console.log('Opening resource:', resourceId);
             
-            // You can add specific URLs for each resource here
-            // For example:
             const resourceUrls = {
-                // Day 3 Sessions
                 'slides-day3-1': 'URL_FOR_DAY3_SESSION1_SLIDES',
                 'slides-day3-2': 'URL_FOR_DAY3_SESSION2_SLIDES', 
                 'workshop-day3-2': 'URL_FOR_DAY3_SESSION2_WORKSHOP',
                 'cases-day3-3': 'URL_FOR_DAY3_SESSION3_CASES',
                 'cases-day3-4': 'URL_FOR_DAY3_SESSION4_CASES',
-                
-                // Day 4 Sessions
                 'slides-day4-1': 'URL_FOR_DAY4_SESSION1_SLIDES',
                 'slides-day4-2': 'URL_FOR_DAY4_SESSION2_SLIDES',
                 'workshop-day4-2': 'URL_FOR_DAY4_SESSION2_WORKSHOP',
@@ -474,7 +700,6 @@
             };
             
             if (resourceUrls[resourceId]) {
-                // Replace with actual URL opening when you have the links
                 alert(`Opening ${resourceId}. Replace this with: window.open("${resourceUrls[resourceId]}", "_blank");`);
                 // window.open(resourceUrls[resourceId], '_blank');
             } else {
@@ -491,10 +716,34 @@
                 'airdocs': 'YOUR_AIRDOCS_URL'
             };
             
-            // For now showing alert - replace with actual links
             alert(`${linkType} link will redirect to: ${links[linkType]}`);
             // window.open(links[linkType], '_blank');
         }
+
+        // Add smooth reveal animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.session-card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
     </script>
 </body>
 </html>
