@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Large Language Models for Qualitative Data Analysis</title>
+    <title>LLM Summer School for Digital Humanities</title>
     <style>
         * {
             margin: 0;
@@ -26,7 +26,7 @@
         }
         
         .header-content {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 2rem;
         }
@@ -64,63 +64,40 @@
             color: #24292f;
         }
         
-        .instructor {
+        .subtitle {
             font-size: 1.2rem;
-            color: #0969da;
-            font-weight: 600;
+            color: #656d76;
+            margin-bottom: 1rem;
         }
         
         .container {
-            max-width: 1000px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 3rem 2rem;
-        }
-        
-        .workshop-intro {
-            background: white;
-            border: 1px solid #d1d9e0;
-            border-radius: 8px;
-            padding: 2.5rem;
-            margin-bottom: 3rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        
-        .workshop-intro h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #24292f;
-        }
-        
-        .workshop-intro p {
-            margin-bottom: 1rem;
-            color: #656d76;
-            font-size: 1.1rem;
-        }
-        
-        .workshop-intro ul {
-            margin-left: 1.5rem;
-            color: #656d76;
-        }
-        
-        .workshop-intro li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .section-title {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: #24292f;
-            text-align: center;
-        }
-        
-        .resources-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
+            grid-template-columns: 280px 1fr;
+            gap: 3rem;
         }
         
-        .resource-card {
+        .day-section {
+            margin-bottom: 4rem;
+        }
+        
+        .day-header {
+            font-size: 1.8rem;
+            color: #0969da;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e1e5e9;
+        }
+        
+        .sessions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .session-card {
             background: white;
             border: 1px solid #d1d9e0;
             border-radius: 8px;
@@ -129,14 +106,14 @@
             cursor: pointer;
         }
         
-        .resource-card:hover {
+        .session-card:hover {
             border-color: #0969da;
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
         
         .card-image {
-            height: 120px;
+            height: 140px;
             background: linear-gradient(135deg, #f6f8fa, #e1e7ef);
             display: flex;
             align-items: center;
@@ -144,6 +121,8 @@
             color: #656d76;
             font-size: 0.9rem;
             border-bottom: 1px solid #d1d9e0;
+            text-align: center;
+            padding: 1rem;
         }
         
         .card-body {
@@ -151,32 +130,44 @@
         }
         
         .card-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: #24292f;
         }
         
+        .card-time {
+            color: #0969da;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+        
         .card-description {
             color: #656d76;
             margin-bottom: 1rem;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+        
+        .resource-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
         }
         
         .resource-button {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1.2rem;
+            gap: 0.3rem;
+            padding: 0.4rem 0.8rem;
             border: none;
             border-radius: 6px;
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             font-weight: 600;
             text-decoration: none;
             cursor: pointer;
             transition: all 0.2s;
-            width: 100%;
-            justify-content: center;
         }
         
         .btn-slides {
@@ -197,65 +188,78 @@
             background: #fff1a0;
         }
         
-        .btn-materials {
+        .btn-cases {
             background: #ffebe9;
             color: #cf222e;
         }
         
-        .btn-materials:hover {
+        .btn-cases:hover {
             background: #ffd8d3;
         }
         
-        .links-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+        .btn-live {
+            background: #dcfce7;
+            color: #166534;
         }
         
-        .link-card {
-            background: white;
-            border: 1px solid #d1d9e0;
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.2s;
+        .btn-live:hover {
+            background: #bbf7d0;
         }
         
-        .link-card:hover {
-            border-color: #0969da;
-            transform: translateY(-2px);
-        }
-        
-        .link-card h3 {
-            margin-bottom: 1rem;
-            color: #24292f;
-        }
-        
-        .link-card p {
-            color: #656d76;
-            font-size: 0.9rem;
-        }
-        
-        .contact-info {
+        .sidebar {
             background: white;
             border: 1px solid #d1d9e0;
             border-radius: 8px;
             padding: 2rem;
-            margin-top: 3rem;
-            text-align: center;
+            height: fit-content;
+            position: sticky;
+            top: 120px;
         }
         
-        .contact-info h3 {
+        .sidebar h2 {
+            font-size: 1.5rem;
+            color: #b91c1c;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            border-bottom: 3px solid #b91c1c;
+            padding-bottom: 0.5rem;
+        }
+        
+        .links-list {
+            list-style: none;
+        }
+        
+        .links-list li {
             margin-bottom: 1rem;
-            color: #24292f;
         }
         
-        .contact-info p {
-            color: #656d76;
+        .links-list a {
+            color: #374151;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            display: block;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f3f4f6;
+            transition: color 0.2s;
+        }
+        
+        .links-list a:hover {
+            color: #0969da;
+        }
+        
+        .links-list li:last-child a {
+            border-bottom: none;
+        }
+        
+        .main-content {
+            min-width: 0;
         }
         
         @media (max-width: 768px) {
             .container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
                 padding: 2rem 1rem;
             }
             
@@ -263,16 +267,12 @@
                 font-size: 2rem;
             }
             
-            .workshop-intro {
-                padding: 1.5rem;
-            }
-            
-            .resources-grid {
+            .sessions-grid {
                 grid-template-columns: 1fr;
             }
             
-            .links-section {
-                grid-template-columns: 1fr;
+            .sidebar {
+                position: static;
             }
         }
     </style>
@@ -285,152 +285,216 @@
                     <span>◇</span>
                 </div>
             </div>
-            <h1>Large Language Models for Qualitative Data Analysis</h1>
-            <p class="instructor">Sarah Oberbichler (Leibniz Institute of European History, Mainz)</p>
+            <h1>LLM Summer School for DH</h1>
+            <p class="subtitle">Large Language Models for Digital Humanities</p>
         </div>
     </header>
 
     <div class="container">
-        <div class="workshop-intro">
-            <h2>Workshop Abstract</h2>
-            <p>Recent AI developments have opened new perspectives for qualitative research. While corpus-based discourse or content analysis traditionally treated texts as a "bag of words" and identified linguistic patterns based on frequency distributions, Large Language Models (LLMs) offer a significantly more profound ability to process language, semantics, and context.</p>
-            
-            <p>This workshop will introduce how LLMs can be integrated into qualitative research by providing insights into their capabilities and limitations, alongside hands-on training in:</p>
-            <ul>
-                <li>Prompt engineering for qualitative analysis</li>
-                <li>Model implementation in research workflows</li>
-                <li>Critical bias evaluation techniques</li>
-                <li>Practical analysis of earthquake newspaper reporting and their argumentative units</li>
+        <!-- Important Links Sidebar -->
+        <aside class="sidebar">
+            <h2>Important Links</h2>
+            <ul class="links-list">
+                <li><a href="#" onclick="openLink('github')">GitHub Repository</a></li>
+                <li><a href="#" onclick="openLink('mattermost')">Mattermost</a></li>
+                <li><a href="#" onclick="openLink('moodle')">Moodle Course Room</a></li>
+                <li><a href="#" onclick="openLink('glossary')">Glossary</a></li>
+                <li><a href="#" onclick="openLink('airdocs')">AI Model Research Documentation Sheet (AIRDocs)</a></li>
             </ul>
-        </div>
+        </aside>
 
-        <h2 class="section-title">Workshop Resources</h2>
-        <div class="resources-grid">
-            <div class="resource-card" onclick="openResource('slides')">
-                <div class="card-image">
-                    Workshop Slides Preview
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Workshop Slides</h3>
-                    <p class="card-description">
-                        Complete presentation slides covering LLM fundamentals, qualitative analysis methods, and practical applications.
-                    </p>
-                    <button class="resource-button btn-slides">
-                        📄 View Slides
-                    </button>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Day 3 -->
+            <div class="day-section">
+                <h2 class="day-header">Day 3 - Wednesday, September 10, 2025</h2>
+                <div class="sessions-grid">
+                    <div class="session-card" onclick="openResource('day3-session1')">
+                        <div class="card-image">
+                            Digital Editions Overview slide preview
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Digital Editions and LLMs</h3>
+                            <div class="card-time">09:00-10:30</div>
+                            <p class="card-description">
+                                Introduction to LLM-enhanced digital scholarly editions
+                            </p>
+                            <div class="resource-buttons">
+                                <button class="resource-button btn-slides" onclick="event.stopPropagation(); openResource('slides-day3-1')">
+                                    📄 Slides
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="session-card" onclick="openResource('day3-session2')">
+                        <div class="card-image">
+                            Modeling with LLMs slide preview
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Modeling with LLMs</h3>
+                            <div class="card-time">11:00-12:30</div>
+                            <p class="card-description">
+                                Semantic modeling and knowledge representation
+                            </p>
+                            <div class="resource-buttons">
+                                <button class="resource-button btn-slides" onclick="event.stopPropagation(); openResource('slides-day3-2')">
+                                    📄 Slides
+                                </button>
+                                <button class="resource-button btn-workshop" onclick="event.stopPropagation(); openResource('workshop-day3-2')">
+                                    🛠️ Workshop
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="session-card" onclick="openResource('day3-session3')">
+                        <div class="card-image">
+                            Operationalization slide preview
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Operationalization</h3>
+                            <div class="card-time">14:00-15:30</div>
+                            <p class="card-description">
+                                Implementing LLM pipelines for edition workflows
+                            </p>
+                            <div class="resource-buttons">
+                                <button class="resource-button btn-cases" onclick="event.stopPropagation(); openResource('cases-day3-3')">
+                                    📋 Cases
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="session-card" onclick="openResource('day3-session4')">
+                        <div class="card-image">
+                            Exploration slide preview
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Exploration</h3>
+                            <div class="card-time">16:00-17:30</div>
+                            <p class="card-description">
+                                Interactive exploration and discovery in digital texts
+                            </p>
+                            <div class="resource-buttons">
+                                <button class="resource-button btn-cases" onclick="event.stopPropagation(); openResource('cases-day3-4')">
+                                    📋 Cases
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="resource-card" onclick="openResource('workshop')">
-                <div class="card-image">
-                    Hands-on Workshop Materials
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Workshop Materials</h3>
-                    <p class="card-description">
-                        Interactive exercises, prompt engineering templates, and hands-on training materials for practical implementation.
-                    </p>
-                    <button class="resource-button btn-workshop">
-                        🛠️ Access Workshop
-                    </button>
-                </div>
-            </div>
+            <!-- Day 4 -->
+            <div class="day-section">
+                <h2 class="day-header">Day 4 - Thursday, September 11, 2025</h2>
+                <div class="sessions-grid">
+                    <div class="session-card" onclick="openResource('day4-session1')">
+                        <div class="card-image">
+                            Vibe Editions slide preview
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Vibe Editions and Promptotyping</h3>
+                            <div class="card-time">09:00-10:30</div>
+                            <p class="card-description">
+                                Experimental approaches to edition design with LLMs
+                            </p>
+                            <div class="resource-buttons">
+                                <button class="resource-button btn-slides" onclick="event.stopPropagation(); openResource('slides-day4-1')">
+                                    📄 Slides
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="resource-card" onclick="openResource('case-study')">
-                <div class="card-image">
-                    Case Study Materials
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Case Study: Earthquake Reporting</h3>
-                    <p class="card-description">
-                        Earthquake newspaper reporting dataset and analysis materials for examining argumentative units and bias evaluation.
-                    </p>
-                    <button class="resource-button btn-materials">
-                        📰 Case Study Materials
-                    </button>
-                </div>
-            </div>
-        </div>
+                    <div class="session-card" onclick="openResource('day4-session2')">
+                        <div class="card-image">
+                            AI Editions Future slide preview
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">AI Editions: Future Perspectives</h3>
+                            <div class="card-time">11:00-12:30</div>
+                            <p class="card-description">
+                                Envisioning next-generation scholarly editions
+                            </p>
+                            <div class="resource-buttons">
+                                <button class="resource-button btn-slides" onclick="event.stopPropagation(); openResource('slides-day4-2')">
+                                    📄 Slides
+                                </button>
+                                <button class="resource-button btn-workshop" onclick="event.stopPropagation(); openResource('workshop-day4-2')">
+                                    🛠️ Workshop
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
-        <h2 class="section-title">Important Links</h2>
-        <div class="links-section">
-            <div class="link-card">
-                <h3>🔗 Research Repository</h3>
-                <p>Access additional research papers and resources on LLMs in qualitative analysis</p>
+                    <div class="session-card" onclick="openResource('day4-session3')">
+                        <div class="card-image">
+                            Closing Session slide preview
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Closing Session & Discussion</h3>
+                            <div class="card-time">14:00-15:30</div>
+                            <p class="card-description">
+                                Reflections on LLMs in Digital Humanities
+                            </p>
+                            <div class="resource-buttons">
+                                <button class="resource-button btn-live" onclick="event.stopPropagation(); openResource('live-session')">
+                                    🎤 Live Session
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="link-card">
-                <h3>💻 Code Examples</h3>
-                <p>GitHub repository with code examples and implementation guides</p>
-            </div>
-            
-            <div class="link-card">
-                <h3>📚 Reading List</h3>
-                <p>Recommended readings and further resources for continued learning</p>
-            </div>
-            
-            <div class="link-card">
-                <h3>🤝 Community</h3>
-                <p>Join the discussion forum for workshop participants and researchers</p>
-            </div>
-        </div>
-
-        <div class="contact-info">
-            <h3>Contact Information</h3>
-            <p><strong>Sarah Oberbichler</strong><br>
-            Leibniz Institute of European History, Mainz<br>
-            Questions about workshop content and research methods</p>
-        </div>
+        </main>
     </div>
 
     <script>
-        function openResource(resourceType) {
-            // This function will be called when resource cards are clicked
-            // You can add your own URLs or actions here
+        function openResource(resourceId) {
+            // Handle different resource types based on resourceId
+            console.log('Opening resource:', resourceId);
             
-            switch(resourceType) {
-                case 'slides':
-                    // Replace with your actual slides URL
-                    alert('Slides will be available here. Replace this alert with: window.open("your-slides-url", "_blank");');
-                    // window.open("your-slides-url", "_blank");
-                    break;
-                    
-                case 'workshop':
-                    // Replace with your actual workshop materials URL
-                    alert('Workshop materials will be available here. Replace this alert with: window.open("your-workshop-url", "_blank");');
-                    // window.open("your-workshop-url", "_blank");
-                    break;
-                    
-                case 'case-study':
-                    // Replace with your actual case study materials URL
-                    alert('Case study materials will be available here. Replace this alert with: window.open("your-case-study-url", "_blank");');
-                    // window.open("your-case-study-url", "_blank");
-                    break;
-                    
-                default:
-                    console.log('Unknown resource type');
+            // You can add specific URLs for each resource here
+            // For example:
+            const resourceUrls = {
+                // Day 3 Sessions
+                'slides-day3-1': 'URL_FOR_DAY3_SESSION1_SLIDES',
+                'slides-day3-2': 'URL_FOR_DAY3_SESSION2_SLIDES', 
+                'workshop-day3-2': 'URL_FOR_DAY3_SESSION2_WORKSHOP',
+                'cases-day3-3': 'URL_FOR_DAY3_SESSION3_CASES',
+                'cases-day3-4': 'URL_FOR_DAY3_SESSION4_CASES',
+                
+                // Day 4 Sessions
+                'slides-day4-1': 'URL_FOR_DAY4_SESSION1_SLIDES',
+                'slides-day4-2': 'URL_FOR_DAY4_SESSION2_SLIDES',
+                'workshop-day4-2': 'URL_FOR_DAY4_SESSION2_WORKSHOP',
+                'live-session': 'URL_FOR_LIVE_SESSION'
+            };
+            
+            if (resourceUrls[resourceId]) {
+                // Replace with actual URL opening when you have the links
+                alert(`Opening ${resourceId}. Replace this with: window.open("${resourceUrls[resourceId]}", "_blank");`);
+                // window.open(resourceUrls[resourceId], '_blank');
+            } else {
+                alert(`Resource ${resourceId} will be available soon!`);
             }
         }
         
-        // You can add click handlers to the important links as well
-        document.addEventListener('DOMContentLoaded', function() {
-            const linkCards = document.querySelectorAll('.link-card');
-            linkCards.forEach((card, index) => {
-                card.addEventListener('click', function() {
-                    // Add your links here
-                    const links = [
-                        'your-research-repository-url',
-                        'your-github-repository-url', 
-                        'your-reading-list-url',
-                        'your-community-forum-url'
-                    ];
-                    
-                    // For now, show alert - replace with actual navigation
-                    alert(`Link ${index + 1} will redirect to: ${links[index]}`);
-                    // window.open(links[index], '_blank');
-                });
-            });
-        });
+        function openLink(linkType) {
+            const links = {
+                'github': 'YOUR_GITHUB_REPOSITORY_URL',
+                'mattermost': 'YOUR_MATTERMOST_URL',
+                'moodle': 'YOUR_MOODLE_COURSE_URL', 
+                'glossary': 'YOUR_GLOSSARY_URL',
+                'airdocs': 'YOUR_AIRDOCS_URL'
+            };
+            
+            // For now showing alert - replace with actual links
+            alert(`${linkType} link will redirect to: ${links[linkType]}`);
+            // window.open(links[linkType], '_blank');
+        }
     </script>
 </body>
 </html>
