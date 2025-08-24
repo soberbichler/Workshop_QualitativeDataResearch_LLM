@@ -273,16 +273,21 @@
             transition: all 0.3s ease;
             position: relative;
         }
+
         .card-image {
-            border-radius: 8px;
-            overflow: hidden; /* trims anything outside rounded edges */
+            height: 200px;          /* fixed height */
+            overflow: hidden;       /* trims extra image parts */
+            padding: 0;             /* remove background padding */
+            background: none;       /* remove the gradient background */
         }
+            
         .card-image img {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            height: 100%;
+            object-fit: cover;      /* fills container cleanly */
             display: block;
         }
+
 
         
         .session-card::before {
