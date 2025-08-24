@@ -277,6 +277,17 @@
             cursor: pointer;
             position: relative;
         }
+        .card-image {
+            border-radius: 8px;
+            overflow: hidden; /* trims anything outside rounded edges */
+        }
+        .card-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
         
         .session-card::before {
             content: '';
