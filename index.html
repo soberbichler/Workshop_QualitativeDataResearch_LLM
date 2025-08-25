@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+.hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
+        }<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -48,14 +56,12 @@
             overflow-x: hidden;
         }
         
-        /* Animated background gradient */
+        /* Minimal header design */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 4rem 0 3rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-bottom: 1px solid var(--gray-lighter);
             position: relative;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             overflow: hidden;
         }
         
@@ -63,149 +69,69 @@
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
             right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.133 7-7s-3.134-7-7-7-7 3.133-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.133 7-7s-3.134-7-7-7-7 3.133-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-            animation: float 20s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            33% { transform: translateY(-20px) rotate(1deg); }
-            66% { transform: translateY(20px) rotate(-1deg); }
-        }
-        
-        /* Floating orbs */
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(40px);
-            opacity: 0.4;
-            animation: orb-float 15s ease-in-out infinite;
-        }
-        
-        .orb-1 {
-            width: 400px;
-            height: 400px;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            top: -200px;
-            right: -100px;
-            animation-delay: 0s;
-        }
-        
-        .orb-2 {
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            bottom: -150px;
-            left: -100px;
-            animation-delay: 5s;
-        }
-        
-        .orb-3 {
-            width: 250px;
-            height: 250px;
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-            top: 50%;
-            left: 10%;
-            animation-delay: 10s;
-        }
-        
-        @keyframes orb-float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
+            opacity: 0.08;
+            transform: translate(25%, -25%);
         }
         
         .hero-content {
-            max-width: 900px;
-            text-align: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
             position: relative;
             z-index: 10;
-            padding: 2rem;
-            animation: fadeInUp 1s ease;
         }
         
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
+            background: var(--white);
+            border: 1px solid var(--gray-lighter);
             border-radius: 100px;
-            padding: 0.75rem 1.5rem;
-            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
             font-weight: 500;
-            color: var(--dark);
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow);
-        }
-        
-        .hero-badge::before {
-            content: '📅';
-            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
         }
         
         .hero h1 {
             font-family: 'DM Serif Display', serif;
-            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-size: clamp(2rem, 4vw, 2.75rem);
             font-weight: 400;
-            color: var(--white);
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            color: var(--dark);
+            margin-bottom: 1rem;
+            line-height: 1.2;
         }
         
         .hero-meta {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius);
-            padding: 1.5rem 2rem;
-            display: inline-block;
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .hero-instructor {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-        
-        .hero-affiliation {
-            font-size: 1rem;
-            color: var(--gray);
-        }
-        
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        .hero-meta span {
+            display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: var(--white);
-            opacity: 0.7;
-            animation: bounce 2s infinite;
         }
         
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
+        .hero-meta span:not(:last-child)::after {
+            content: '•';
+            margin-left: 0.5rem;
+            color: var(--gray-light);
         }
         
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 5rem 2rem;
+            padding: 3rem 2rem 5rem;
             display: grid;
             grid-template-columns: 320px 1fr;
             gap: 3rem;
@@ -219,37 +145,18 @@
         
         .sidebar-card {
             background: var(--surface);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+            padding: 1.5rem;
             border: 1px solid var(--gray-lighter);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .sidebar-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
         }
         
         .sidebar h2 {
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .sidebar h2::before {
-            content: '🔗';
-            font-size: 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--gray);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .links-list {
@@ -257,48 +164,26 @@
         }
         
         .links-list li {
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
         }
         
         .links-list a {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            color: var(--gray);
+            gap: 0.5rem;
+            color: var(--dark-secondary);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.9rem;
-            padding: 0.875rem 1rem;
+            padding: 0.625rem 0.75rem;
             border-radius: var(--radius-sm);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .links-list a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, var(--primary-light), var(--secondary));
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.2s ease;
         }
         
         .links-list a:hover {
-            color: var(--white);
-            transform: translateX(4px);
-        }
-        
-        .links-list a:hover::before {
-            opacity: 1;
-        }
-        
-        .links-list a span {
-            position: relative;
-            z-index: 1;
+            background: var(--background);
+            color: var(--primary);
+            transform: translateX(2px);
         }
         
         .main-content {
@@ -306,41 +191,27 @@
         }
         
         .workshop-abstract {
-            background: var(--surface);
-            border-radius: var(--radius-lg);
-            padding: 3rem;
             margin-bottom: 4rem;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .workshop-abstract::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
-            opacity: 0.05;
         }
         
         .workshop-abstract h2 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 2rem;
-            font-weight: 400;
-            color: var(--dark);
-            margin-bottom: 2rem;
-            position: relative;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
         
         .workshop-abstract p {
             font-size: 1rem;
             line-height: 1.8;
-            color: var(--gray);
+            color: var(--dark-secondary);
             margin-bottom: 1.5rem;
-            position: relative;
+        }
+        
+        .workshop-abstract p:last-child {
+            margin-bottom: 0;
         }
         
         .day-section {
@@ -348,23 +219,12 @@
         }
         
         .day-header {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.75rem;
-            font-weight: 400;
-            color: var(--dark);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gray);
             margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .day-header::before {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 2px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
         
         .sessions-grid {
@@ -375,24 +235,26 @@
         
         .session-card {
             background: var(--surface);
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-lighter);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             cursor: pointer;
         }
         
         .session-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--shadow-xl);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
         }
         
         .card-image {
-            height: 200px;
-            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+            height: 160px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
             position: relative;
             overflow: hidden;
+            border-bottom: 1px solid var(--gray-lighter);
         }
         
         .card-image img {
@@ -404,47 +266,35 @@
         }
         
         .session-card:hover .card-image img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
         
-        /* Fallback pattern for cards without images */
-        .card-image:not(:has(img))::before {
+        /* Minimal pattern for cards without images */
+        .card-image:not(:has(img))::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
-            animation: slide 10s linear infinite;
-        }
-        
-        @keyframes slide {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(40px); }
+            background: linear-gradient(135deg, var(--primary-light) 0%, transparent 100%);
+            opacity: 0.05;
         }
         
         .card-body {
-            padding: 2rem;
+            padding: 1.5rem;
         }
         
         .card-title {
-            font-size: 1.25rem;
-            font-weight: 700;
+            font-size: 1.125rem;
+            font-weight: 600;
             color: var(--dark);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             line-height: 1.4;
         }
         
         .card-time {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--primary);
-            font-weight: 600;
+            color: var(--gray);
+            font-weight: 500;
             font-size: 0.875rem;
             margin-bottom: 1rem;
-        }
-        
-        .card-time::before {
-            content: '🕐';
         }
         
         .card-description {
@@ -463,43 +313,30 @@
         .resource-button {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.625rem 1.25rem;
-            border: none;
+            gap: 0.375rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--gray-lighter);
+            background: var(--white);
             border-radius: var(--radius-sm);
-            font-size: 0.875rem;
-            font-weight: 600;
+            font-size: 0.8125rem;
+            font-weight: 500;
             text-decoration: none;
             cursor: pointer;
             transition: all 0.2s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn-slides {
-            background: linear-gradient(135deg, #818cf8, #a78bfa);
-            color: white;
-        }
-        
-        .btn-workshop {
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            color: white;
-        }
-        
-        .btn-cases {
-            background: linear-gradient(135deg, #f87171, #ef4444);
-            color: white;
-        }
-        
-        .btn-live {
-            background: linear-gradient(135deg, #34d399, #10b981);
-            color: white;
+            color: var(--dark-secondary);
         }
         
         .resource-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.2);
+            background: var(--background);
+            border-color: var(--primary-light);
+            color: var(--primary);
+            transform: translateY(-1px);
         }
+        
+        .btn-slides::before { content: '📄'; font-size: 0.875rem; }
+        .btn-workshop::before { content: '🛠️'; font-size: 0.875rem; }
+        .btn-cases::before { content: '📋'; font-size: 0.875rem; }
+        .btn-live::before { content: '🎤'; font-size: 0.875rem; }
         
         @keyframes fadeInUp {
             from {
@@ -533,12 +370,26 @@
         }
         
         @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 0 2rem;
+            }
+            
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 1.75rem;
+            }
+            
+            .hero-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .hero-meta span:not(:last-child)::after {
+                display: none;
             }
             
             .container {
-                padding: 3rem 1rem;
+                padding: 2rem 1rem;
             }
             
             .sessions-grid {
@@ -561,37 +412,26 @@
 </head>
 <body>
     <section class="hero">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-        
         <div class="hero-content">
             <div class="hero-badge">
-                Summer School • September 8-11, 2025
+                📅 September 8-11, 2025
             </div>
             <h1>Large Language Models for Qualitative Data Analysis</h1>
             <div class="hero-meta">
-                <p class="hero-instructor">Sarah Oberbichler</p>
-                <p class="hero-affiliation">Leibniz Institute of European History, Mainz</p>
+                <span>Sarah Oberbichler</span>
+                <span>Leibniz Institute of European History, Mainz</span>
             </div>
-        </div>
-        
-        <div class="scroll-indicator">
-            <span style="font-size: 0.875rem;">Scroll to explore</span>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 5v14M19 12l-7 7-7-7"/>
-            </svg>
         </div>
     </section>
 
     <div class="container">
         <aside class="sidebar">
             <div class="sidebar-card">
-                <h2>Important Links</h2>
+                <h2>Resources</h2>
                 <ul class="links-list">
                     <li>
                         <a href="https://github.com/soberbichler/Workshop_QualitativeDataResearch_LLM" onclick="openLink('github')">
-                            <span>📁 GitHub Repository</span>
+                            GitHub Repository →
                         </a>
                     </li>
                 </ul>
@@ -600,14 +440,14 @@
 
         <main class="main-content">
             <div class="workshop-abstract">
-                <h2>About the Workshop</h2>
+                <h2>Overview</h2>
                 <p>Recent AI developments have opened new perspectives for qualitative research. While corpus-based discourse or content analysis traditionally treated texts as a "bag of words" and identified linguistic patterns based on frequency distributions, Large Language Models (LLMs) offer a significantly more profound ability to process language, semantics, and context.</p>
                 
                 <p>This workshop will introduce how LLMs can be integrated into qualitative research by providing insights into their capabilities and limitations, alongside hands-on training in prompt engineering, model implementation, and critical bias evaluation—all demonstrated through practical analysis of earthquake newspaper reporting and their argumentative units.</p>
             </div>
 
             <div class="day-section">
-                <h2 class="day-header">Wednesday, September 10, 2025</h2>
+                <h2 class="day-header">September 10, 2025</h2>
                 <div class="sessions-grid">
                     <div class="session-card">
                         <div class="card-image">
@@ -621,7 +461,7 @@
                             </p>
                             <div class="resource-buttons">
                                 <button class="resource-button btn-slides" onclick="event.stopPropagation(); openResource('slides-day3-1')">
-                                    📄 Slides
+                                    Slides
                                 </button>
                             </div>
                         </div>
@@ -639,10 +479,10 @@
                             </p>
                             <div class="resource-buttons">
                                 <button class="resource-button btn-slides" onclick="event.stopPropagation(); openResource('slides-day3-2')">
-                                    📄 Slides
+                                    Slides
                                 </button>
                                 <button class="resource-button btn-workshop" onclick="event.stopPropagation(); openResource('workshop-day3-2')">
-                                    🛠️ Workshop
+                                    Workshop
                                 </button>
                             </div>
                         </div>
@@ -658,7 +498,7 @@
                             </p>
                             <div class="resource-buttons">
                                 <button class="resource-button btn-cases" onclick="event.stopPropagation(); openResource('cases-day3-3')">
-                                    📋 Cases
+                                    Cases
                                 </button>
                             </div>
                         </div>
@@ -674,7 +514,7 @@
                             </p>
                             <div class="resource-buttons">
                                 <button class="resource-button btn-cases" onclick="event.stopPropagation(); openResource('cases-day3-4')">
-                                    📋 Cases
+                                    Cases
                                 </button>
                             </div>
                         </div>
@@ -683,7 +523,7 @@
             </div>
 
             <div class="day-section">
-                <h2 class="day-header">Thursday, September 11, 2025</h2>
+                <h2 class="day-header">September 11, 2025</h2>
                 <div class="sessions-grid">
                     <div class="session-card">
                         <div class="card-image">
@@ -697,7 +537,7 @@
                             </p>
                             <div class="resource-buttons">
                                 <button class="resource-button btn-slides" onclick="event.stopPropagation(); openResource('slides-day4-1')">
-                                    📄 Slides
+                                    Slides
                                 </button>
                             </div>
                         </div>
@@ -713,7 +553,7 @@
                             </p>
                             <div class="resource-buttons">
                                 <button class="resource-button btn-live" onclick="event.stopPropagation(); openResource('live-session')">
-                                    🎤 Live Session
+                                    Live Session
                                 </button>
                             </div>
                         </div>
@@ -783,15 +623,6 @@
                     }
                 });
             });
-        });
-
-        // Parallax effect for hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero && scrolled < window.innerHeight) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
         });
     </script>
 </body>
