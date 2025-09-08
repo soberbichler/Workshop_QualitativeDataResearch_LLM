@@ -422,11 +422,13 @@
                 <h2>Resources</h2>
                 <ul class="links-list">
                     <li>
-                        <a href="https://github.com/soberbichler/Workshop_QualitativeDataResearch_LLM" onclick="openLink('github')">
+                        <a href="https://github.com/soberbichler/Workshop_QualitativeDataResearch_LLM" onclick="openLink('github-workshop'); return false;">
                             GitHub Repository →
                         </a>
-                        <a href="https://github.com/soberbichler/Introduction-to-Notebooks-and-Python-for-Humanities-Researchers" onclick="openLink('github')">
-                            Introduction to Jupyter Notebooks | Learning Material →
+                    </li>
+                    <li>
+                        <a href="https://github.com/soberbichler/Introduction-to-Notebooks-and-Python-for-Humanities-Researchers" onclick="openLink('github-intro'); return false;">
+                            Introduction to Jupyter Notebooks →
                         </a>
                     </li>
                 </ul>
@@ -434,17 +436,17 @@
         </aside>
 
         <main class="main-content">
-            <div class="workshop-abstract">
+            <section class="workshop-abstract">
                 <h2>Overview</h2>
                 <p>Recent AI developments have opened new perspectives for qualitative research. While corpus-based discourse or content analysis traditionally treated texts as a "bag of words" and identified linguistic patterns based on frequency distributions, Large Language Models (LLMs) offer a significantly more profound ability to process language, semantics, and context.</p>
                 
                 <p>This workshop will introduce how LLMs can be integrated into qualitative research by providing insights into their capabilities and limitations, alongside hands-on training in prompt engineering, model implementation, and critical bias evaluation—all demonstrated through practical analysis of earthquake newspaper reporting and their argumentative units.</p>
-            </div>
+            </section>
 
-            <div class="day-section">
+            <section class="day-section">
                 <h2 class="day-header">September 10, 2025</h2>
                 <div class="sessions-grid">
-                    <div class="session-card">
+                    <article class="session-card">
                         <div class="card-image">
                             <img src="images/session1.png" alt="Session 1">
                         </div>
@@ -460,9 +462,9 @@
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="session-card">
+                    <article class="session-card">
                         <div class="card-image">
                             <img src="images/session2.png" alt="Session 2">
                         </div>
@@ -481,17 +483,17 @@
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="session-card">
-                        <div class="card-image"></div>
+                    <article class="session-card">
+                        <div class="card-image">
                             <img src="images/session3.png" alt="Session 3">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">Qualitative Data Research - From Unstructured to Structured Data</h3>
                             <div class="card-time">14:00-15:30</div>
                             <p class="card-description">
-                                Learn how to apply qualitative research methods via LLMs and transform unstructed data into structured data. Learn how to prompt engineer for qualitative research methods.
+                                Learn how to apply qualitative research methods via LLMs and transform unstructured data into structured data. Learn how to prompt engineer for qualitative research methods.
                             </p>
                             <div class="resource-buttons">
                                 <button class="resource-button btn-cases" onclick="event.stopPropagation(); openResource('cases-day3-3')">
@@ -499,11 +501,11 @@
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="session-card">
-                        <div class="card-image"></div>
-                            <img src="images/session5.png" alt="Session 5">
+                    <article class="session-card">
+                        <div class="card-image">
+                            <img src="images/session4.png" alt="Session 4">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">Quality and Bias Evaluation</h3>
@@ -517,21 +519,22 @@
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </article>
                 </div>
-            </div>
+            </section>
 
-            <div class="day-section">
+            <section class="day-section">
                 <h2 class="day-header">September 11, 2025</h2>
                 <div class="sessions-grid">
-                    <div class="session-card">
+                    <article class="session-card">
                         <div class="card-image">
+                            <img src="images/session5.png" alt="Session 5">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">Using Small Models for Qualitative Research - Fine-Tuning Models</h3>
                             <div class="card-time">09:00-10:30</div>
                             <p class="card-description">
-                                Lets' experiment, can we improve results with small models with fine-tuning? .
+                                Let's experiment: can we improve results with small models through fine-tuning?
                             </p>
                             <div class="resource-buttons">
                                 <button class="resource-button btn-slides" onclick="event.stopPropagation(); openResource('slides-day4-1')">
@@ -539,12 +542,14 @@
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="session-card">
-                        <div class="card-image"></div>
+                    <article class="session-card">
+                        <div class="card-image">
+                            <img src="images/session6.png" alt="Session 6">
+                        </div>
                         <div class="card-body">
-                            <h3 class="card-title">The LLM pipeline: Create pipeline for your own research questions</h3>
+                            <h3 class="card-title">The LLM Pipeline: Create Pipeline for Your Own Research Questions</h3>
                             <div class="card-time">14:00-15:30</div>
                             <p class="card-description">
                                 Explore real-world applications and emerging trends in LLM-assisted qualitative research methodologies.
@@ -555,9 +560,9 @@
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </article>
                 </div>
-            </div>
+            </section>
         </main>
     </div>
 
@@ -574,17 +579,18 @@
                 'live-session': '#'
             };
             
-            // Replace with actual URLs
+            // Replace # with actual URLs when available
             console.log(`Opening resource: ${resourceId}`);
             // window.open(resourceUrls[resourceId], '_blank');
         }
         
         function openLink(linkType) {
             const links = {
-                'github': 'https://github.com/soberbichler/Workshop_QualitativeDataResearch_LLM'
+                'github-workshop': 'https://github.com/soberbichler/Workshop_QualitativeDataResearch_LLM',
+                'github-intro': 'https://github.com/soberbichler/Introduction-to-Notebooks-and-Python-for-Humanities-Researchers'
             };
             
-            // window.open(links[linkType], '_blank');
+            window.open(links[linkType], '_blank');
         }
 
         // Smooth scroll behavior
