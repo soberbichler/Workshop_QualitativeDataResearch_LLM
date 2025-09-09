@@ -432,17 +432,17 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://huggingface.co/spaces/oberbics/Argument-Mining" onclick="openLink('github-intro'); return false;">
+                        <a href="https://huggingface.co/spaces/oberbics/Argument-Mining" onclick="openLink('spaces'); return false;">
                             Argument Mining Explorer →
                         </a>
                     </li>
                      <li>
-                        <a href="https://discord.com/channels/1414886498595246090/1414886500902109216" onclick="openLink('github-intro'); return false;">
+                        <a href="https://discord.com/channels/1414886498595246090/1414886500902109216" onclick="openLink('discord'); return false;">
                             Discord Channel →
                         </a>
                     </li>
                     <li>
-                        <a href="https://jupyter.hpc.gwdg.de/" onclick="openLink('github-intro'); return false;">
+                        <a href="https://jupyter.hpc.gwdg.de/" onclick="openLink('hpc'); return false;">
                             HPC JupyterHub →
                         </a>
                     </li>
@@ -529,20 +529,17 @@
 
                     <article class="session-card">
                         <div class="card-image">
-                            <img src="images/session4.png" alt="Session 4">
+                            <img src="images/session6.png" alt="Session 6">
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">Quality and Bias Evaluation</h3>
+                            <h3 class="card-title">The LLM Pipeline: Create Pipeline for Your Own Research Questions</h3>
                             <div class="card-time">16:00-17:30</div>
                             <p class="card-description">
-                                Critical assessment of LLM outputs, understanding biases, and implementing quality control measures in research workflows.
+                                Explore real-world applications and emerging trends in LLM-assisted qualitative research methodologies.
                             </p>
                             <div class="resource-buttons">
-                                <button class="resource-button btn-cases" onclick="event.stopPropagation(); openResource('evaluation-day3-4')">
-                                    Human Evaluation 
-                                </button>
-                                <button class="resource-button btn-cases" onclick="event.stopPropagation(); openResource('LLm-documetation-day3-4')">
-                                    LLM Documentation
+                                <button class="resource-button btn-live" onclick="event.stopPropagation(); openResource('questionaire')">
+                                    Questionaire
                                 </button>
                             </div>
                         </div>
@@ -573,17 +570,20 @@
 
                     <article class="session-card">
                         <div class="card-image">
-                            <img src="images/session6.png" alt="Session 6">
+                            <img src="images/session4.png" alt="Session 4">
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">The LLM Pipeline: Create Pipeline for Your Own Research Questions</h3>
+                            <h3 class="card-title">Quality and Bias Evaluation</h3>
                             <div class="card-time">14:00-15:30</div>
                             <p class="card-description">
-                                Explore real-world applications and emerging trends in LLM-assisted qualitative research methodologies.
+                                Critical assessment of LLM outputs, understanding biases, and implementing quality control measures in research workflows.
                             </p>
                             <div class="resource-buttons">
-                                <button class="resource-button btn-live" onclick="event.stopPropagation(); openResource('questionaire')">
-                                    Questionaire
+                                <button class="resource-button btn-cases" onclick="event.stopPropagation(); openResource('evaluation-day3-4')">
+                                    Human Evaluation 
+                                </button>
+                                <button class="resource-button btn-cases" onclick="event.stopPropagation(); openResource('LLm-documetation-day3-4')">
+                                    LLM Documentation
                                 </button>
                             </div>
                         </div>
@@ -624,10 +624,15 @@
             const links = {
                 'github-workshop': 'https://github.com/soberbichler/Workshop_QualitativeDataResearch_LLM',
                 'github-intro': 'https://github.com/soberbichler/Introduction-to-Notebooks-and-Python-for-Humanities-Researchers',
-                'spaces': 'https://huggingface.co/spaces/oberbics/Argument-Mining'
+                'spaces': 'https://huggingface.co/spaces/oberbics/Argument-Mining',
+                'discord': 'https://discord.com/channels/1414886498595246090/1414886500902109216',
+                'hpc': 'https://jupyter.hpc.gwdg.de/'
             };
             
-            window.open(links[linkType], '_blank');
+            const url = links[linkType];
+            if (url) {
+                window.open(url, '_blank');
+            }
         }
 
         // Smooth scroll behavior
